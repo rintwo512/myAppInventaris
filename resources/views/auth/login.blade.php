@@ -12,8 +12,7 @@
             </div>
             <div class="col-lg-6">
               <div class="card-body p-4 p-sm-5">
-                <h5 class="card-title">Sign In</h5>
-                <p class="card-text mb-5">Do not forget to be happy!</p>
+                <h5 class="card-title">Sign In</h5>                
                 <div class="flashError" data-error="{{ session('loginError') }}"></div>
                 {{-- @if (session()->has('loginError'))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
