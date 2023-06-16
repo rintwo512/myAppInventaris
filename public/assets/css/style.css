@@ -1205,15 +1205,14 @@ a {
 	background: #16e15e
 }
 
-.chat-content {
-	margin-left: 340px;
+.chat-content {	
 	padding: 85px 15px 15px 15px
 }
 
 .chat-header {
 	position: absolute;
 	height: 70px;
-	left: 340px;
+	left: 3px;
 	right: 0;
 	top: 0;
 	padding: 15px;
@@ -1226,7 +1225,7 @@ a {
 .chat-footer {
 	position: absolute;
 	height: 70px;
-	left: 340px;
+	left: 3px;
 	right: 0;
 	bottom: 0;
 	padding: 15px;
@@ -1674,4 +1673,18 @@ a {
   70%{
     transform: scale(1);
   }
+}
+
+.img-thumb{
+    height: 450px;
+}
+
+.card-img:hover{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px !important;
+    transition: all 0.3s ease-in-out;
+}
+
+.img-thumb img{
+    width:200px;
+    height: 200px;
 }

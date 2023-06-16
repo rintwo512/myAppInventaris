@@ -24,6 +24,9 @@
         <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Tools">         
           <button type="button" data-bs-toggle="pill" data-bs-target="#pills-tools" class="nav-link" ><i class="bi bi-tools pl-10"></i></button>          
       </li>  
+      <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Produk">
+          <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-produk" type="button"><i class="bi bi-bag-plus-fill"></i></button>
+        </li>
         <li class="nav-item" data-bs-toggle="tooltip" data-bs-placement="right" title="Settings">
           <button class="nav-link" data-bs-toggle="pill" data-bs-target="#pills-settings" type="button"><i class="bi bi-gear-fill"></i></button>
         </li>
@@ -84,6 +87,19 @@
           <a href="/dashboard/charts" class="list-group-item {{ Request::is('/dashboard/charts*') ? 'active' : '' }}"><i class="bi bi-bar-chart-fill"></i> Update Charts</a>          
         </div>
       </div>
+      <div class="tab-pane fade" id="pills-produk">
+        <div class="list-group list-group-flush">
+          <div class="list-group-item">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-0">Produk</h5>
+            </div>                    
+          </div>
+          <a href="/produk/daikin" class="list-group-item {{ Request::is('produk/daikin*') ? 'active' : '' }}"><i class="bi bi-person-lines-fill"></i> Produk AC</a>
+          <a href="/produk/alatlistrik" class="list-group-item {{ Request::is('produk/alatlistrik*') ? 'active' : '' }}"><i class="bi bi-person-lines-fill"></i> Peralatan Listrik</a>
+          <a href="/produk/hp" class="list-group-item {{ Request::is('produk/hp*') ? 'active' : '' }}"><i class="bi bi-person-lines-fill"></i> Smartphone</a>
+          
+        </div>
+    </div>
       <div class="tab-pane fade" id="pills-settings">
         <div class="list-group list-group-flush">
           <div class="list-group-item">
@@ -130,6 +146,21 @@
         <a href="/tools/watts-to-kWh" class="list-group-item {{ Request::is('/tools/watts-to-kWh*') ? 'active' : '' }}"><i class="bi bi-gear-wide"></i> Konversi Watts To kWh</a>
 
         <a href="/tools/joules-to-watt" class="list-group-item {{ Request::is('/tools/joules-to-watt*') ? 'active' : '' }}"><i class="bi bi-gear-wide"></i> Joules To Watt</a>
+
+        <a href="/scrapeLinks" class="list-group-item {{ Request::is('/scrapeLinks*') ? 'active' : '' }}"><i class="bi bi-gear-wide"></i> Scrapping Links</a>
+
+        <a href="/tools/json" class="list-group-item {{ Request::is('/tools/json*') ? 'active' : '' }}"><i class="bi bi-gear-wide"></i> Convert Json</a>
+
+        <a href="/tools/json2" class="list-group-item {{ Request::is('/tools/json2*') ? 'active' : '' }}"><i class="bi bi-gear-wide"></i> Convert Json 2</a>
+
+
+        <a href="/tools/colorpick" class="list-group-item {{ Request::is('/tools/colorpick*') ? 'active' : '' }}"><i class="bi bi-gear-wide"></i> Color Picker</a>
+
+        <a href="/tools/crop" class="list-group-item {{ Request::is('/tools/crop*') ? 'active' : '' }}"><i class="bi bi-gear-wide"></i> Cropping Image</a>
+
+        <a href="/tools/rgb" class="list-group-item {{ Request::is('/tools/rgb*') ? 'active' : '' }}"><i class="bi bi-gear-wide"></i> RGB Color Generator</a>
+
+        <a href="/tools/jwt" class="list-group-item {{ Request::is('/tools/jwt*') ? 'active' : '' }}"><i class="bi bi-gear-wide"></i> JWT Generator</a>
       </div>
     </div>
     <div class="tab-pane fade" id="pills-teknik">

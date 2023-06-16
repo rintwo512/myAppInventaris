@@ -1,41 +1,140 @@
 @extends('layouts.main')
 
+ 
+
 @section('content')
-<div class="row">
-<div class="col-md-8">
-<div class="ratio ratio-16x9 mb-4">
-  <iframe src="https://www.youtube.com/embed/r28RWd9lXbw" title="YouTube video" allowfullscreen></iframe>
-</div>
-</div>
-<div class="col-md-4">
-  <div class="card">
-    <div class="card-body">
-      <p data-period="1000"><span class="title_run" data-period="3000"
-        data-type='["Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus asperiores vel est facere hic laboriosam possimus sint earum neque nostrum? Dolorum nam a consequatur illum quidem magnam eum ipsam asperiores. Saepe libero adipisci nihil laborum, pariatur repellat error omnis autem obcaecati illo suscipit corrupti atque recusandae iste, accusantium rerum corporis."]'></span></p>
-    </div>
-  </div>
-</div>
-</div>
+
+<style>
+
+
+* {
+    -webkit-touch-callout: none; /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none; /* prevent webkit from resizing text to fit */
+  /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-user-select: none; /* prevent copy paste, to allow, change 'none' to 'text' */
+   /* -webkit-tap-highlight-color: rgba(0,0,0,0); */
+  }
+
+    /* body {
+      background: #fafafa;
+      color: #000;
+      margin: 5px;
+      padding: 0px;
+      margin-bottom: 45px;
+      text-align: center;
+      font-family: 'Roboto',Helvetica, Arial;
+    } */
+
+    /* a {
+      color: #000;
+    } */
+
+    .box {
+      display: inline-block;
+      
+      color: #FFF;
+      background: #7B378E;
+      padding: 10px;
+      /* border-radius:10px; */
+      cursor: pointer;
+    }
+
+    .box:hover {
+      background: #444;
+    }
+
+    .big {
+      font-size: 2em;
+      display: inline-block;
+      margin: 10px;
+    }
+    .containerD {
+      position: relative;
+      display: inline-block;
+      
+      width: 800px;
+      height: 660px;
+    }
+
+    #robot {
+      position: absolute;
+      height:650px;
+      /* width:100%; */
+      top: 0px;
+      left:50px;
+      z-index: 1;
+      -webkit-box-shadow: 0px 0px 20px 0px #707070;
+      -moz-box-shadow: 0px 0px 20px 0px #707070;
+      box-shadow: 0px 0px 20px 0px #707070;
+    }
+
+    #redux {
+      position: absolute;
+      height:650px;
+      /* width:100%; */
+      top: 0px;
+      left: 50px;
+      z-index: 2;
+    }
+
+    #progress {
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      color: black;
+      pointer-events: none;
+      z-index: 3;
+      text-shadow: 0px 0px 2px #FFFFFF;
+    }
+    small {
+      font-size: 12px;
+      color: #BBB;
+      font-weight: normal;
+    }
+
+    .btnDraw{
+      display:flex;
+      justify-content:center;
+      margin-left:-40px;
+    }
+
+
+</style>
+
+
+<style>
+ 
+ .lead { font-size: 1.5rem; font-weight: 300; }
+ /* .containerS {  display:inline-block} */
+ .btn {  }
+ canvas {}
+ </style>
+
+
 @can('admin')  
 {{-- Chart --}}
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <div class="col-md-2 mb-3">  
   <select class="form-select" name="tahun" id="tahun">
     <option value="">--Select--</option>
-    {{-- @foreach ($list_tahun as $tahun)
-        <option value="{{ $tahun->tahun }}">{{ $tahun->tahun }}</option>
-    @endforeach   --}}
+    @foreach ($list_tahun as $tahun)
+        <!-- <option value="{{ $tahun->tahun }}">{{ $tahun->tahun }}</option> -->
+    @endforeach
   </select>               
 </div>
 <div class="card">
   <div class="card-body">
     <div class="chart-container1">
-      <div id="chart6"></div>
+      <div id="chart66"></div>
     </div>
   </div>
 </div>
 {{-- End Chart --}}
 @endcan
+
+
+
 <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-2 row-cols-xxl-4">  
   <div class="col">
     <div class="card radius-10">
@@ -182,6 +281,52 @@
    </div>   
 </div>
 
+<div class="row">
+<div class="col">
+    <div class="card mt-3">
+      <div class="card-body">
+        <p data-period="1000"><span class="title_run" data-period="3000"
+          data-type='["Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus asperiores vel est facere hic laboriosam possimus sint earum neque nostrum? Dolorum nam a consequatur illum quidem magnam eum ipsam asperiores. Saepe libero adipisci nihil laborum, pariatur repellat error omnis autem obcaecati illo suscipit corrupti atque recusandae iste, accusantium rerum corporis."]'></span></p>
+      </div>
+  </div>
+</div>
+<div class="col">
+  <div class="containerS">  
+    <canvas id="sketchpad" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  width: 500px; height: 300px;"></canvas>
+    <p><button onclick="sketchpad.undo();" class="btn" style="padding: 1.25rem; border: 0; border-radius: 3px; background-color: #4F46E5; color: #fff; cursor: pointer;">Undo</button>
+    <button onclick="sketchpad.redo();" class="btn" style="padding: 1.25rem; border: 0; border-radius: 3px; background-color: #4F46E5; color: #fff; cursor: pointer;">Redo</button>
+    <button onclick="sketchpad.animate(10);" class="btn" style="padding: 1.25rem; border: 0; border-radius: 3px; background-color: #4F46E5; color: #fff; cursor: pointer;">Animate</button></p>
+  
+    <canvas id="sketchpad2" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;  width: 500px; height: 300px;"></canvas>
+    <p><button onclick="recover();" class="btn" id="recover-button" style="padding: 1.25rem; border: 0; border-radius: 3px; background-color: #4F46E5; color: #fff; cursor: pointer;">Recover</button>
+  </div>
+<!-- <div class="ratio ratio-16x9 mb-4">
+  <iframe src="https://www.youtube.com/embed/r28RWd9lXbw" title="YouTube video" allowfullscreen></iframe>
+</div> -->
+</div>
+
+
+<!-- <div class="card">
+    <div class="card-body"> -->
+  <div class="col">
+    <span class="containerD">
+      <img id="robot" src="/assets/images/robot.jpg" />
+      <img id="redux" src="/assets/images/robot_redux.png" />
+      <div id="progress">0%</div>      
+    </span>
+    <div class="btnDraw">
+    <div id="resetBtn" class="box"> RESET </div>
+    <div id="clearBtn" class="box"> CLEAR </div>
+    <div id="toggleBtn" class="box"> DISABLE </div>
+  </div>
+
+    
+</div>
+
+
+
+</div>
+
 
 
 <script src="/assets/js/jquery.min.js"></script>
@@ -275,7 +420,7 @@ function drawChart(result, title, year){
         }
       }]
     };
-    var chart = new ApexCharts(document.querySelector("#chart6"), options);
+    var chart = new ApexCharts(document.querySelector("#chart66"), options);
     chart.render();
   }
 </script>
@@ -285,6 +430,7 @@ function drawChart(result, title, year){
   $(document).ready(function() {
     $('#tahun').change(function() {
       var year = $(this).val();
+      // console.log(year);
       
         if(year != ''){
           chartAc(year, `Statistic Bulanan Maintenance AC : Tahun ${year}`);
@@ -292,12 +438,12 @@ function drawChart(result, title, year){
     });
     
     const d = new Date();
-    let tahun = d.getFullYear();    
+    let tahun = d.getFullYear() - 1;    
     chartAc(tahun, `Statistic Bulanan Maintenance AC : Tahun ${tahun}`);
   });
 </script>
 
-{{-- <script type="text/javascript">
+<!-- <script type="text/javascript">
 function chartAc(year, title){
    
    $.ajaxSetup({
@@ -368,7 +514,7 @@ new Chart(document.getElementById("chart7"), {
     let tahun = d.getFullYear();    
     chartAc(tahun, `Statistic Bulanan Maintenance AC : ${tahun}`);
   });
-</script> --}}
+</script> -->
 
 <script>
   var textType = function(el, runText, periode) {
@@ -424,6 +570,9 @@ new Chart(document.getElementById("chart7"), {
       document.body.appendChild(css);
   };
   </script>
+
+
+
 
   
 
