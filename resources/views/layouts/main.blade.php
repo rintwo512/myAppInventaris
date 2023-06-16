@@ -6,6 +6,9 @@
  
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">  
+
+  
+
   <link href="/assets/plugins/datetimepicker/css/classic.css" rel="stylesheet" />
   <link href="/assets/plugins/datetimepicker/css/classic.time.css" rel="stylesheet" />
   <link href="/assets/plugins/datetimepicker/css/classic.date.css" rel="stylesheet" />
@@ -27,7 +30,13 @@
   <link href="/assets/css/light-theme.css" rel="stylesheet" />
   <link href="/assets/css/semi-dark.css" rel="stylesheet" />
   <link rel="stylesheet" href="/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.min.css">
-  <title>{{ $title }}</title>  
+  <!-- <link href="/assets/css/jqueryCSS.css" rel="stylesheet" /> -->
+ 
+
+  <title>{{ $title }}</title> 
+  <meta name="csrf-token" content="{{csrf_token()}}">
+
+ 
 </head>
 
 <body>
@@ -94,6 +103,13 @@
   <script src="/assets/js/app.js"></script>
   <script src="/assets/js/index.js"></script>
 
+  <!-- JQUERY SCRIPT -->
+  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+  <script src="/assets/js/jqueryScript/jquery.eraser.js"></script>
+  <script src="/assets/js/jqueryScript/sketchpad.js"></script>
+  <!-- END JQUERY SCRIPT -->
+  
+
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
   
 
@@ -132,8 +148,61 @@
     }
 
   </script>
-  
 
+<script type = "text/javascript">
+
+$(function(){
+  $('#redux').eraser({
+    progressFunction: function(p) {
+      $('#progress').html(Math.round(p*100)+'%');
+    }
+  });
+
+  $('#resetBtn').click(function(event) {
+    $('#redux').eraser('reset');
+      $('#progress').html('0%');
+    event.preventDefault();
+  });
+
+  $('#clearBtn').click(function(event) {
+    $('#redux').eraser('clear');
+      $('#progress').html('100%');
+    event.preventDefault();
+  });
+
+  $('#toggleBtn').click(function(event) {
+    var $redux = $('#redux'),
+      $toggleBtn = $('#toggleBtn');
+
+    if ($redux.eraser('enabled')) {
+      $toggleBtn.text(' ENABLE ');
+      $redux.eraser('disable');
+    } else {
+      $toggleBtn.text(' DISABLE ');
+      $redux.eraser('enable');
+    }
+
+    event.preventDefault();
+  });
+
+});
+
+</script>
+
+
+<script>
+  var sketchpad = new Sketchpad({
+  element: '#sketchpad',
+  width: 500,
+  height: 300,
+});
+function recover(event) {
+        var settings = sketchpad.toObject();
+        settings.element = '#sketchpad2';
+        var otherSketchpad = new Sketchpad(settings);
+        $('#recover-button').hide();
+      }
+</script>
 
 </body>
 

@@ -1,7 +1,8 @@
 <?php
-
+use Illuminate\Http\Request;
 use App\Models\Ac;
 use App\Models\User;
+use App\Http\Controllers\ChatController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AcController;
 use App\Http\Controllers\NoteController;
@@ -15,6 +16,9 @@ use App\Http\Controllers\CctvMonitor3Controller;
 use App\Http\Controllers\CctvMonitor4Controller;
 use App\Http\Controllers\StockController;
 use Illuminate\Routing\Route as RoutingRoute;
+use App\Http\Controllers\scrapLinkController;
+use App\Http\Controllers\ChatbotController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -264,3 +268,76 @@ Route::get('/teknik/mesin', function () {
         'title' => "Teknik Mesin"
     ]);
 })->middleware('auth');
+
+
+Route::get('/scrapeLinks', [scrapLinkController::class, 'scrapeLinks']);
+Route::post('/getLinks', [scrapLinkController::class, 'getScrapeLinks']);
+
+
+Route::get('/produk/daikin', function () {
+    return view('produk.daikin', [
+        'title' => "Produk AC"
+    ]);
+});
+
+Route::get('/produk/alatlistrik', function () {
+    return view('produk.alatListrik', [
+        'title' => "Alat Listrik"
+    ]);
+});
+
+Route::get('/produk/hp', function () {
+    return view('produk.hp', [
+        'title' => "Smartphone"
+    ]);
+});
+
+Route::get('/tools/colorpick', function () {
+    return view('tools/colorPick', [
+        'title' => "Color Picker"
+    ]);
+});
+
+Route::get('/tools/json', function () {
+    return view('tools.json', [
+        'title' => "Pretty Json"
+    ]);
+});
+
+Route::get('/tools/crop', function () {
+    return view('tools.cropImage', [
+        'title' => "Crop Image"
+    ]);
+});
+
+Route::get('/tools/rgb', function () {
+    return view('tools.rgbColor', [
+        'title' => "RGB Color Generator"
+    ]);
+});
+
+
+Route::get('/tools/jwt', function () {
+    return view('tools.JWTdecoder', [
+        'title' => "JWT Decoder"
+    ]);
+});
+
+Route::get('/tools/json2', function () {
+    return view('tools.json2', [
+        'title' => "Json View"
+    ]);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+

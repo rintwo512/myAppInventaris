@@ -62,7 +62,7 @@
                     @endcan
                     <th>No.</th>
                     <th>Assets</th>
-                    <th>Label</th>
+                    <th>ID</th>
                     <th>Wing</th>
                     <th>Lantai</th>
                     <th>Ruangan</th>
@@ -148,7 +148,7 @@
                     @endcan
                     <th>No.</th>
                     <th>Assets</th>
-                    <th>Label</th>
+                    <th>ID</th>
                     <th>Wing</th>
                     <th>Lantai</th>
                     <th>Ruangan</th>
