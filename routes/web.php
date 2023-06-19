@@ -18,6 +18,7 @@ use App\Http\Controllers\StockController;
 use Illuminate\Routing\Route as RoutingRoute;
 use App\Http\Controllers\scrapLinkController;
 use App\Http\Controllers\ChatbotController;
+use App\Http\Controllers\ProjectmController;
 
 
 /*
@@ -328,6 +329,12 @@ Route::get('/tools/json2', function () {
         'title' => "Json View"
     ]);
 });
+
+Route::get('/project', [ProjectmController::class, 'index'])->middleware('auth');
+Route::get('/project/create', [ProjectmController::class, 'create'])->middleware('auth');
+Route::post('/project/create', [ProjectmController::class, 'store'])->middleware('auth');
+Route::get('/project/delete/{id}', [ProjectmController::class, 'destroy'])->middleware('auth');
+Route::post('/project/update/{id}', [ProjectmController::class, 'edit'])->middleware('auth');
 
 
 
