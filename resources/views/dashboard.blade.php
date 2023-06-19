@@ -438,7 +438,7 @@ function drawChart(result, title, year){
     });
     
     const d = new Date();
-    let tahun = d.getFullYear() - 1;    
+    let tahun = d.getFullYear();    
     chartAc(tahun, `Statistic Bulanan Maintenance AC : Tahun ${tahun}`);
   });
 </script>

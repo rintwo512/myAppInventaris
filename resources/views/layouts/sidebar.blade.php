@@ -63,6 +63,7 @@
               <a href="/ac" class="list-group-item {{ Request::is('ac*') ? 'active' : '' }}"><i class="bi bi-server"></i> Data AC</a>
               <a href="/dashboard/cctv" class="list-group-item list-group-item {{ Request::is('dashboard/cctv*') ? 'active' : '' }}"><i class="bi bi-server"></i> Data CCTV</a>
               <a href="/dashboard/stock" class="list-group-item list-group-item {{ Request::is('dashboard/stock*') ? 'active' : '' }}"><i class="bi bi-server"></i> Stock Barang</a>
+              <a href="/project" class="list-group-item list-group-item {{ Request::is('/project*') ? 'active' : '' }}"><i class="bi bi-server"></i> Project Managament</a>
             </div>
         </div>
         <div class="tab-pane fade" id="pills-adminMenu">
